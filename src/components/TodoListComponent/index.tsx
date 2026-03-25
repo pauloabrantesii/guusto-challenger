@@ -1,4 +1,5 @@
 import { TodoItem } from '@components/TodoItem';
+import { HeaderComponent } from '@components/HeaderComponent';
 import React from 'react';
 import { ActivityIndicator, FlatList, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -7,6 +8,7 @@ import { TodoListComponentProps } from './types';
 
 export const TodoListComponent = ({
   todos,
+  pendingCount,
   isLoading,
   isError,
   onToggle,
@@ -30,14 +32,12 @@ export const TodoListComponent = ({
     );
   }
 
-  const pending = todos.filter(t => !t.completed).length;
-
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title}>Minhas Tarefas</Text>
-        <Text style={styles.subtitle}>{pending} pendente(s)</Text>
-      </View>
+      <HeaderComponent
+        title="Minhas Tarefas"
+        subtitle={`${pendingCount} pendente(s)`}
+      />
       <FlatList
         data={todos}
         keyExtractor={item => String(item.id)}

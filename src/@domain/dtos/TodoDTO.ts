@@ -1,3 +1,4 @@
+// DTO - Data Transfer Object é um objeto que transfere dados entre diferentes camadas de uma aplicação.
 export interface TodoDTO {
   id: number;
   userId: number;

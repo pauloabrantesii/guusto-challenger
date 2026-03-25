@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
 import { ListTodoService } from '@application/services/ListTodoService';
 import { useTodoStore } from '@services/todoStore';
+import { useQuery } from '@tanstack/react-query';
+import { useCallback, useEffect, useState } from 'react';
 
 const PAGE_SIZE = 20;
 const todoService = new ListTodoService();
@@ -9,7 +9,8 @@ const todoService = new ListTodoService();
 export const useTodoListLogic = () => {
   const [page, setPage] = useState(1);
 
-  const { todos, setTodos, toggleTodo } = useTodoStore();
+  const { todos, setTodos, appendTodos, toggleTodo } = useTodoStore();
+  const pendingCount = todos.filter(t => !t.completed).length;
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ['todos', page],
@@ -17,17 +18,15 @@ export const useTodoListLogic = () => {
   });
 
   useEffect(() => {
-    if (data?.data) {
-      if (page === 1) {
-        setTodos(data.data);
-      } else {
-        const currentIds = new Set(todos.map(t => t.id));
-        const newItems = data.data.filter(t => !currentIds.has(t.id));
-        setTodos([...todos, ...newItems]);
-      }
+    if (!data?.data) {
+      return;
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data]);
+    if (page === 1) {
+      setTodos(data.data);
+    } else {
+      appendTodos(data.data);
+    }
+  }, [data, page, setTodos, appendTodos]);
 
   const handleLoadMore = useCallback(() => {
     if (!isLoading) {
@@ -37,6 +36,7 @@ export const useTodoListLogic = () => {
 
   return {
     todos,
+    pendingCount,
     isLoading,
     isError,
     toggleTodo,

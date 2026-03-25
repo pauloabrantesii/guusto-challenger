@@ -1,4 +1,5 @@
 import { TodoItem } from '@components/TodoItem';
+import { HeaderComponent } from '@components/HeaderComponent';
 import React from 'react';
 import { FlatList, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -13,12 +14,11 @@ export const HistoryComponent = ({
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title}>Histórico</Text>
-        <View style={styles.badge}>
-          <Text style={styles.badgeText}>{completed.length} concluída(s)</Text>
-        </View>
-      </View>
+      <HeaderComponent
+        title="Histórico"
+        subtitle={`${completed.length} concluída(s)`}
+        variant="badge"
+      />
       <FlatList
         data={completed}
         keyExtractor={item => String(item.id)}

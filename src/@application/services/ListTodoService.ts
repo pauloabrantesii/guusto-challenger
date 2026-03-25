@@ -1,8 +1,9 @@
-import { AxiosInstance } from 'axios';
 import { ITodoListServiceResponse } from '@domain/dtos/TodoDTO';
 import { ITodoListService } from '@domain/services/ITodoListService';
+import { AxiosInstance } from 'axios';
 import { getAuthenticatedInstance } from '../../services/api';
 
+// Aqui criei a camada de aplicação, que é responsável por chamar a API e retornar os dados.
 export class ListTodoService implements ITodoListService {
   private apiInstance: AxiosInstance | null = null;
 
