@@ -1,7 +1,7 @@
 import { ListTodoService } from '@application/services/ListTodoService';
-import { useTodoStore } from '@services/todoStore';
 import { useQuery } from '@tanstack/react-query';
 import { useCallback, useEffect, useState } from 'react';
+import { useTodoStore } from 'src/services/store/todoStore';
 
 const PAGE_SIZE = 20;
 const todoService = new ListTodoService();

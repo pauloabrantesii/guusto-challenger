@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { TodoDTO } from '../src/@domain/dtos/TodoDTO';
+import { TodoDTO } from '../../@domain/dtos/TodoDTO';
 
 interface TodoStore {
   todos: TodoDTO[];
