@@ -5,13 +5,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { styles } from './styles';
 import { TodoListComponentProps } from './types';
 
-export const TodoListComponent: React.FC<TodoListComponentProps> = ({
+export const TodoListComponent = ({
   todos,
   isLoading,
   isError,
   onToggle,
   onLoadMore,
-}) => {
+}: TodoListComponentProps) => {
   if (isLoading && todos.length === 0) {
     return (
       <View style={styles.loadingContainer}>

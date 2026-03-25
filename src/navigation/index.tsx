@@ -47,7 +47,7 @@ export const AppNavigator: React.FC = () => {
           name="Historico"
           component={HistoryContainer}
           options={{
-            tabBarLabel: 'Histórico',
+            tabBarLabel: 'concluídas',
             tabBarIcon: ({ color }) => (
               <Text style={{ fontSize: 20, color }}>✅</Text>
             ),

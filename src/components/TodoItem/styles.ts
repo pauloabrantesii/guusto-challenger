@@ -1,28 +1,42 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 14,
-    paddingHorizontal: 16,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 10,
+  card: {
+    borderRadius: 12,
+    paddingHorizontal: 18,
+    paddingVertical: 16,
     marginBottom: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.06,
-    shadowRadius: 4,
-    elevation: 2,
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+  },
+  textBlock: {
+    flex: 1,
+    paddingRight: 12,
   },
   title: {
-    flex: 1,
-    fontSize: 15,
-    color: '#1A1A2E',
-    marginLeft: 12,
+    fontSize: 16,
+    lineHeight: 22,
+    fontWeight: '600',
+    color: '#1F2937',
   },
   titleCompleted: {
     textDecorationLine: 'line-through',
-    color: '#A0A0A0',
+    color: '#9CA3AF',
+    fontWeight: '500',
+  },
+  meta: {
+    marginTop: 6,
+    fontSize: 13,
+    lineHeight: 18,
+    fontWeight: '400',
+    color: '#9CA3AF',
+  },
+  metaCompleted: {
+    color: '#B8BCC4',
+  },
+  checkboxWrap: {
+    paddingTop: 2,
   },
 });
